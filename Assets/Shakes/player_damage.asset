@@ -1,0 +1,47 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: afe8a9d509803419fa64e2b80f2a080b, type: 3}
+  m_Name: player_damage
+  m_EditorClassIdentifier: 
+  target: 0
+  amplitude: 0.5
+  frequency: 5
+  duration: 0.5
+  blendOverLifetime:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: -0.012573242
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    - serializedVersion: 2
+      time: 0.049998477
+      value: 0.99367523
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    - serializedVersion: 2
+      time: 0.87127006
+      value: 0.42237866
+      inSlope: -1.5571713
+      outSlope: -1.5571713
+      tangentMode: 0
+    - serializedVersion: 2
+      time: 1
+      value: -0.012573242
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
