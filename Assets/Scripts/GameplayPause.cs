@@ -8,7 +8,6 @@ using UnityEngine.UI;
 
 public class GameplayPause : MonoBehaviour, IPointerDownHandler
 {
-
     private bool isPaused = false;
     // Use this for initialization
     void Start()
@@ -16,7 +15,6 @@ public class GameplayPause : MonoBehaviour, IPointerDownHandler
         isPaused = false;
         Debug.Log("pause started"); 
     }
-
 
     public void PauseClicked()
     {
@@ -32,13 +30,9 @@ public class GameplayPause : MonoBehaviour, IPointerDownHandler
         }
     }
 
-    public void OnPointerDown(PointerEventData data) 
-
+    public void OnPointerDown(PointerEventData data)
     {
         PauseClicked();
         Debug.Log("pause clicked");
-
     }
-
-
 }

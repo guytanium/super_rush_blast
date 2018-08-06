@@ -6,7 +6,6 @@ using UnityEngine;
 public class Skull2AI : MonoBehaviour
 {
     private Rigidbody2D myRB;
-//    private ParticleSystem myPS;
     private CapsuleCollider2D myCC;
     private Animator myAnim;
 
@@ -51,7 +50,6 @@ public class Skull2AI : MonoBehaviour
     public GameObject myLovelyBones;
     public float boneSpawnRate;
     private bool bonesSpawned;
-//    public float boneReleaseRate;
     [Space(10)]
 
     public float trailEmitStopSpeed = 1f;
@@ -64,7 +62,6 @@ public class Skull2AI : MonoBehaviour
     void Start()
     {
         myRB = GetComponent<Rigidbody2D>();
-//        myPS = GetComponent<ParticleSystem>();
         myCC = GetComponent<CapsuleCollider2D>();
         myAnim = GetComponent<Animator>();
 
@@ -282,8 +279,7 @@ public class Skull2AI : MonoBehaviour
                 yield return new WaitForSeconds(boneSpawnRate);
                 GameObject bonez = Instantiate(myLovelyBones, Vector3.zero, Quaternion.identity) as GameObject;
                 bonez.transform.SetParent(gameObject.transform);
-                //bonez.GetComponent(Skull2BoneSpin) as Skull2BoneSpin.orbitCount = 1;
-                //bonez.transform.parent = transform;
+
                 bonez.SendMessage("orbitCounter", i);
                 i++;
             }
@@ -306,7 +302,7 @@ public class Skull2AI : MonoBehaviour
     //    void OnBecameInvisible()
     //    {
     //        //failsafe to make sure no enemies are stuck outside
-    //        //k why is this so broken
+    //        //TODO: why is this so broken?
     //        if (!isEntering)
     //        {
     //            Destroy(gameObject);
@@ -316,51 +312,4 @@ public class Skull2AI : MonoBehaviour
 }
 
 
-//    { //decent slow moving towards the player example
-//        playerVec3 = GameObject.FindWithTag("Player").transform.position;
-//
-//        xDif = playerVec3.x - transform.position.x;
-//        yDif = playerDirection.y - transform.position.y;
-//
-//        playerDirection = new Vector3(xDif, yDif);
-//
-//        myRB.AddForce(playerVec3.normalized - transform.position.normalized * speed);
-//        if (myRB.velocity.magnitude > idleMaxSpeed)
-//        {
-//            myRB.velocity = myRB.velocity.normalized * idleMaxSpeed;
-//        }
-//
-//    }
-//}
 
-
-
-
-//using System.Collections;
-//using System.Collections.Generic;
-//using UnityEngine;
-//
-//public class Skull2AI : MonoBehaviour
-//{
-
-//
-//    // Use this for initialization
-//    void Start()
-//    {
-//        Attack();
-//    }
-//	
-//    // Update is called once per frame
-//    void Update()
-//    {
-//    }
-//
-//    void Attack()
-//    {
-//        StartCoroutine(spawnBones());
-//    }
-//
-
-//
-//
-//}

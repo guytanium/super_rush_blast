@@ -69,12 +69,8 @@ public class Tiling : MonoBehaviour
                     makeNewBuddy(-1);
                     hasALeftBuddy = true;
                 }
-
-
             }
-        }
-
-                
+        }      
     }
 
 

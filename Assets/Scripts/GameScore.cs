@@ -5,15 +5,9 @@ using UnityEngine.SceneManagement;
 
 public class GameScore : MonoBehaviour
 {
-
     public static int score;
     public string nextLevelName;
     public int levelEndScore;
-    // Use this for initialization
-    void Start()
-    {
-
-    }
 
     public static void AddPoint(int scoreToAdd)
     {
@@ -27,9 +21,6 @@ public class GameScore : MonoBehaviour
         {
             SceneManager.LoadScene(nextLevelName);
         }
-
-
-
     }
 }
 

@@ -71,8 +71,6 @@ public class Skull1AI : MonoBehaviour
 
         playerObject = GameObject.FindWithTag("Player").transform;
         playerVec3 = playerObject.position;
-        //playerVec3 = GameObject.FindWithTag("Player").transform.position;  
-
 
         myCC.enabled = false;
 
@@ -316,8 +314,6 @@ public class Skull1AI : MonoBehaviour
         GameObject chargePS = Instantiate(attackChargePS, transform.position+new Vector3(0,0,2), transform.rotation) as GameObject;
         ParticleSystem parts = chargePS.GetComponent<ParticleSystem>();
 
-        //attackChargePS.transform.parent = gameObject.transform; can't do this, it's a prefab duh
-
         Destroy(chargePS, parts.main.duration);
 
         yield return new WaitForSeconds(attackChargeUpTime);
@@ -343,32 +339,6 @@ public class Skull1AI : MonoBehaviour
         }
         
     }
-//    void OnBecameInvisible()
-//    {
-//        //failsafe to make sure no enemies are stuck outside
-//        //k why is this so broken
-//        if (!isEntering)
-//        {
-//            Destroy(gameObject);
-//        }
-//    }
 
 }
 
-
-//    { //decent slow moving towards the player example
-//        playerVec3 = GameObject.FindWithTag("Player").transform.position;
-//
-//        xDif = playerVec3.x - transform.position.x;
-//        yDif = playerDirection.y - transform.position.y;
-//
-//        playerDirection = new Vector3(xDif, yDif);
-//
-//        myRB.AddForce(playerVec3.normalized - transform.position.normalized * speed);
-//        if (myRB.velocity.magnitude > idleMaxSpeed)
-//        {
-//            myRB.velocity = myRB.velocity.normalized * idleMaxSpeed;
-//        }
-//
-//    }
-//}

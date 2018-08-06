@@ -11,22 +11,11 @@ public class Player_Bullet : MonoBehaviour
     public GameObject bulletImpactPS;
     public GameObject bulletEnemyImpactPS;
 
-
     void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
         rb.AddForce(transform.right * speed);
     }
-
-    void Update()
-    {
-
-
-    }
-    //    void Update()
-    //    {
-    //        rb.AddForce(transform.right * speed);
-    //    }
 
     void OnBecameInvisible()
     {
@@ -44,11 +33,7 @@ public class Player_Bullet : MonoBehaviour
             col.gameObject.GetComponent<enemyBasic>().Damage();
             ParticleSystem enemyImpactParts = enemyImpactPS.GetComponent<ParticleSystem>();
             Destroy(enemyImpactPS, enemyImpactParts.main.duration);
-
-            //        Destroy(col.gameObject);
-
         }
-
         else if (col.gameObject.tag != "Enemy")
         {
             GameObject impactSparksPS = Instantiate(bulletImpactSparksPS, transform.position + new Vector3(0, 0, 2), transform.rotation) as GameObject;
@@ -57,7 +42,7 @@ public class Player_Bullet : MonoBehaviour
 
         }
         GameObject impactPS = Instantiate(bulletImpactPS, transform.position + new Vector3(0, 0, -2), transform.rotation) as GameObject;
-                ParticleSystem parts = impactPS.GetComponent<ParticleSystem>();
+        ParticleSystem parts = impactPS.GetComponent<ParticleSystem>();
         Destroy(impactPS, parts.main.duration);
 
         //destroy the projectile that just caused the trigger collision

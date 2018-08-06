@@ -11,7 +11,6 @@ public class Ghost1AI : MonoBehaviour
     private CapsuleCollider2D myCC;
     private Animator myAnim;
     private SpriteRenderer mySprite;
-    // GameObject wavyChild;
 
     private Vector3 playerTransform;
     private Vector3 playerDirection;
@@ -22,9 +21,6 @@ public class Ghost1AI : MonoBehaviour
 
     private GameObject ghost_attack1;
     private GameObject ghost_attack2;
-
-
-
 
     private float distanceToPlayer;
 
@@ -71,8 +67,6 @@ public class Ghost1AI : MonoBehaviour
         myPS = GetComponent<ParticleSystem>();
         mySprite = GetComponent<SpriteRenderer>();
         myAnim = GetComponent<Animator>();
-
-        //wavyChild = gameObject.transform.Find("ghost1Wavy").gameObject;
 
         ghost_attack1 = gameObject.transform.Find("ghost_attack1").gameObject;
         ghost_attack2 = gameObject.transform.Find("ghost_attack2").gameObject;
@@ -121,7 +115,6 @@ public class Ghost1AI : MonoBehaviour
         Physics2D.IgnoreLayerCollision(14,10,false);
 
 
-        particlesOff();
 
 
         StopCoroutine("backToIdleTimer");
@@ -132,34 +125,6 @@ public class Ghost1AI : MonoBehaviour
 
     }
 
-    void particlesOn()
-    {
-
-//        ghost_attack1.SetActive(true);
-//        ghost_attack2.SetActive(true);
-
-//        myAttack1PS.Play();
-//        myAttack2PS.Play();
-    }
-    void particlesOff()
-    {
-//        ghost_attack1.SetActive(false);
-//        ghost_attack2.SetActive(false);
-////
-//        myAttack1PS.Stop();
-//        myAttack2PS.Stop();
-//
-//        myAttack1PS.Clear();
-//        myAttack2PS.Clear();
-//
- //       myAttack1PS.emission.enabled
-
-//        myAttack1PS.emission.enabled = false;
-//        myAttack2PS.emission.enabled = false;
-//        myAttack1PS.emission.enabled(false);
-//        myAttack2PS.emission.enabled(false);
-
-    }
 
     IEnumerator idleMovement()
     {
@@ -196,8 +161,6 @@ public class Ghost1AI : MonoBehaviour
         isIdle = false;
         isEntering = false;
 
-        particlesOn();
-
         StartCoroutine("backToIdleTimer");  
 
     }
@@ -210,7 +173,6 @@ public class Ghost1AI : MonoBehaviour
 
             idle();
             yield break;
-            //StopCoroutine("backToIdleTimer");
         }
     }
 
@@ -279,20 +241,6 @@ public class Ghost1AI : MonoBehaviour
 
         if (isAttacking)
         {
-//                ghost_attack1.SetActive(true);
-//                ghost_attack2.SetActive(true);
-
-
-//            if (myAttack1PS.isPlaying == false)
-//            {
-//                myAttack1PS.Play();
-//            }
-//
-//            if (myAttack2PS.isPlaying == false)
-//            {
-//                myAttack2PS.Play();
-//            }
-
                 Physics2D.IgnoreLayerCollision(14,10,true);
                 mySprite.enabled = false;
                 myPS.Play();
@@ -333,9 +281,7 @@ public class Ghost1AI : MonoBehaviour
             else if (myRB.velocity.x < -0.01f)
             {
                 myAnim.SetBool("facingRight", false);
-                //myRend.material.SetTextureScale("_MainTex", new Vector2(-1,1));
-                //myWavy.texture.Resize(-1, 1);
-                //myWavy.texture.blackTexture;
+
                 if (isAttacking == true)
                 {
                     mySprite.enabled = false;

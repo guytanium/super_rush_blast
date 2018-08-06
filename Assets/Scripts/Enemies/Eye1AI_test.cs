@@ -44,7 +44,6 @@ public class Eye1AI_test : MonoBehaviour {
     {
         playerVec3 = playerObject.position;
 
-        //Vector2 playerDirection = Vector2.right * CrossPlatformInputManager.GetAxisRaw("RHorizontal") + Vector2.up * CrossPlatformInputManager.GetAxisRaw("RVertical");
         Vector2 playerDirection = playerVec3 - gun.position ;
 
         if (playerDirection.sqrMagnitude > 0.0f)

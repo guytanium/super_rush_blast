@@ -4,9 +4,9 @@ using UnityEngine;
 
 
 
-public class SpawnPoint : MonoBehaviour {
+public class SpawnPoint : MonoBehaviour
+{
     bool spawnDisabled;
-
 
     public void FlashWrapper()
     {
@@ -27,13 +27,10 @@ public class SpawnPoint : MonoBehaviour {
         return new WaitForSeconds(0.1f);
         spawnDisabled = false;
         Debug.Log("spawn enabled");
-
     }
 
     public void SpawnDisable()
     {
         FlashWrapper();
     }
-
-
 }

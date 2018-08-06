@@ -19,13 +19,6 @@ public class AIBasic : MonoBehaviour {
         myRB = GetComponent<Rigidbody2D>();
 		
 	}
-
-//    void Awake () 
-//    {
-//        myRB.MovePosition(Vector2(0,0);
-//            
-//    }
-
 	
 	// Update is called once per frame
 	void FixedUpdate () {
@@ -36,16 +29,6 @@ public class AIBasic : MonoBehaviour {
 
         playerDirection = new Vector3(xDif, yDif);
 
-      //  myRB.AddForce(playerDirection.normalized);
-
-//        myRB.AddForce(playerDirection.normalized * speed);
-///        myRB.AddForce(playerDirection.normalized - transform.position.normalized);
-//        myRB.AddForce(playerTransform.normalized);
-        myRB.AddForce(playerTransform.normalized - transform.position.normalized);
-
-
-
-
-		
+        myRB.AddForce(playerTransform.normalized - transform.position.normalized);		
 	}
 }

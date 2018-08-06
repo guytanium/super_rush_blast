@@ -6,8 +6,8 @@ using UnityStandardAssets.CrossPlatformInput;
 using UnityEngine.SceneManagement;
 
 
-public class PlayerController : MonoBehaviour {
-
+public class PlayerController : MonoBehaviour
+{
 
     private Rigidbody2D myRB;
     private Animator myAnim;
@@ -18,7 +18,7 @@ public class PlayerController : MonoBehaviour {
     private float horizontalInputClean;
     private float verticalInputClean;
     private Vector2 moveInput;
-	private Vector2 moveVelocity;
+    private Vector2 moveVelocity;
 
     [Header("Health")]
     public float playerStartingHealth;
@@ -27,7 +27,7 @@ public class PlayerController : MonoBehaviour {
     public float invincibilityTime;
     public float invincibilityFlashRate;
     [SerializeField]
-    private bool isInvincible ;
+    private bool isInvincible;
 
     [Header("Etc")]
     private GameObject shakeObject;
@@ -39,10 +39,9 @@ public class PlayerController : MonoBehaviour {
     public Animator blackImgAnim;
 
 
-	// Use this for initialization
-	void Awake ()
+    // Use this for initialization
+    void Awake()
     {
-
         shakeObject = GameObject.Find("CameraShake");
 
         myRB = GetComponent<Rigidbody2D>();
@@ -55,20 +54,18 @@ public class PlayerController : MonoBehaviour {
 
         originalMaterial = GetComponent<SpriteRenderer>().material;
 
-        //blackImg = GameObject.Find("BlackImg");
         blackImg = GameObject.Find("BlackImg").GetComponent<Image>();
         blackImgAnim = GameObject.Find("BlackImg").GetComponent<Animator>();
+    }
 
-	}
-       
-    void Start ()
+    void Start()
     {
         blackImgAnim.SetBool("Fade", false);
 
     }
 	
-	// Update is called once per frame
-	void Update ()
+    // Update is called once per frame
+    void Update()
     {
 
 
@@ -84,7 +81,6 @@ public class PlayerController : MonoBehaviour {
             {
                 myAnim.SetBool("facingRight", false);
             }
-
         }
         else
         {
@@ -101,16 +97,15 @@ public class PlayerController : MonoBehaviour {
         }
 
         moveInput = new Vector2(horizontalInputClean, verticalInputClean);
-		moveVelocity = moveInput * moveSpeed;
+        moveVelocity = moveInput * moveSpeed;
 
         if (isInvincible == true)
         {
             StartCoroutine("InvincibilityFlashing");
         }
+    }
 
-	}
-
-    void FixedUpdate ()
+    void FixedUpdate()
     {
         myRB.velocity = moveVelocity;
     }
@@ -149,10 +144,8 @@ public class PlayerController : MonoBehaviour {
     IEnumerator GameOverTimer()
     {
         yield return new WaitForSeconds(1);
-        blackImgAnim.SetBool("Fade",true);
+        blackImgAnim.SetBool("Fade", true);
         SceneManager.LoadScene("GameOver");
-       // GameObject myGun = GameObject.Find("gun").gameObject;
-       // myGun.SetActive = false;
         yield break;
     }
 
@@ -168,6 +161,7 @@ public class PlayerController : MonoBehaviour {
         yield break;
 
     }
+
     IEnumerator InvincibilityFlashing()
     {
         if (isInvincible == true)
@@ -180,6 +174,4 @@ public class PlayerController : MonoBehaviour {
             return new WaitForSeconds(invincibilityFlashRate);
         }
     }
-
-
 }

@@ -58,8 +58,6 @@ public class Eye1AI : MonoBehaviour
 
     public float randomnessAmount = 1f;
 
-
-
     private Transform retinaPoint;
     private Transform gun;
     public Transform bulletPrefab;
@@ -89,16 +87,12 @@ public class Eye1AI : MonoBehaviour
             Debug.Log("No player found");
         }
 
-
         myRB = GetComponent<Rigidbody2D>();
         myCC = GetComponent<CircleCollider2D>();
         myAnim = GetComponent<Animator>();
-        //myRetina = GetComponentsInChildren<SpriteRenderer>();
 
         playerObject = GameObject.FindWithTag("Player").transform;
         playerVec3 = playerObject.position;
-        //playerVec3 = GameObject.FindWithTag("Player").transform.position;  
-
 
         myCC.enabled = false;
         myRetina.enabled = false;
@@ -199,7 +193,6 @@ public class Eye1AI : MonoBehaviour
 
             idle();
             yield break;
-            //StopCoroutine("backToIdleTimer");
         }
     }
 

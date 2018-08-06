@@ -4,16 +4,12 @@ using UnityEngine;
 using UnityStandardAssets.CrossPlatformInput;
 
 
-public class GunController : MonoBehaviour {
-
+public class GunController : MonoBehaviour
+{
     public bool isFiring;
-
 
     public float fireRate;
     private float shotCounter;
-
-    //public Transform firePoint;
-
 
     bool canShoot = true;
     private float lastShot;
@@ -27,12 +23,10 @@ public class GunController : MonoBehaviour {
 
     private ParticleSystem gunShell;
 
-
-
-    void Awake ()
+    void Awake()
     {
         firePoint = transform.Find("FirePoint");
-        if( firePoint == null)
+        if (firePoint == null)
         {
             Debug.Log("No firePoint found");
         }
@@ -40,14 +34,13 @@ public class GunController : MonoBehaviour {
     }
 
     // Use this for initialization
-	void Start () 
-
+    void Start()
     {
 		
-	}
+    }
 	
-	// Update is called once per frame
-	void Update () 
+    // Update is called once per frame
+    void Update()
     {
         Vector2 playerDirection = Vector2.right * CrossPlatformInputManager.GetAxisRaw("RHorizontal") + Vector2.up * CrossPlatformInputManager.GetAxisRaw("RVertical");
 
@@ -66,16 +59,8 @@ public class GunController : MonoBehaviour {
                 StartCoroutine(HandleROF());
             }
             return;
-          //  if (!canShoot)
-           //     return;
-            
-            //Shoot();    //Shoot
-       //     lastShot = Time.time;
-       //     StartCoroutine(HandleROF()); //Handles rate of fire
         }
-
-
-	}
+    }
 
     void Shoot()
     {
@@ -83,18 +68,14 @@ public class GunController : MonoBehaviour {
 
         //muzzleflash
         var muzzleAngles = transform.rotation.eulerAngles;
-        Transform clone = Instantiate(muzzleFlashPrefab, firePoint.position,Quaternion.Euler(muzzleAngles)) as Transform;
+        Transform clone = Instantiate(muzzleFlashPrefab, firePoint.position, Quaternion.Euler(muzzleAngles)) as Transform;
         clone.parent = firePoint;
-        //        float size = Random.Range(0.7f, 1.0f);
-        //        clone.localScale = new Vector3(size, size, 1);
-        Destroy (clone.gameObject, 0.2f);
+        Destroy(clone.gameObject, 0.2f);
 
         //bullet
         var bulletAngles = transform.rotation.eulerAngles;
-        var bullet = Instantiate(bulletPrefab, firePoint.position+new Vector3(0, Random.Range(-bulletSpawnSpray, bulletSpawnSpray), 0), Quaternion.Euler(bulletAngles));
-        bullet.GetComponent<Rigidbody2D>().velocity = new Vector2(bulletSpeed,0); //bullet.transform.forward * bulletSpeed;
-//        bullet.GetComponent<Rigidbody2D>().velocity = bullet.transform.forward * bulletSpeed;
-
+        var bullet = Instantiate(bulletPrefab, firePoint.position + new Vector3(0, Random.Range(-bulletSpawnSpray, bulletSpawnSpray), 0), Quaternion.Euler(bulletAngles));
+        bullet.GetComponent<Rigidbody2D>().velocity = new Vector2(bulletSpeed, 0); 
     }
 
 
@@ -112,6 +93,4 @@ public class GunController : MonoBehaviour {
         //When enough time has passed, allow us to shoot again
         canShoot = true;
     }
-
-
 }
